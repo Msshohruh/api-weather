@@ -24,9 +24,9 @@ function showWeather(data) {
     console.log(data)
     console.log(data.weather[0].main)
 
-
-    weatherContainer.innerHTML += `
-    <div class="card mb-2" style="border-radius: 14px;">
+    let card = document.createElement('div')
+    card.setAttribute('class', 'card mb-2')
+    card.innerHTML = `
         <h5 class="card-title text-center mt-4">${data.name}, ${data.sys.country}</h5>
         <div class="card-body d-flex flex-column justify-content-center align-items-center">
             <img src="./img/${data.weather[0].main}.png" class="card-img-top mb-2" alt="${data.weather[0].main} img">
@@ -34,8 +34,8 @@ function showWeather(data) {
             <p class="card-text">${data.main.temp} ℃</p>
             <a href="#" class="btn btn-primary">DELETE THE CARD</a>
         </div>
-    </div>
     `
+    weatherContainer.prepend(card)
 }
 
 weatherContainer.addEventListener('click', (e) => {

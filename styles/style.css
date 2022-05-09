@@ -21,7 +21,9 @@ h5{
     font-weight: bold;
 }
 .card {
-    width: 340px
+    width: 340px;
+    
+    border-radius: 14px;
 }
 img{
     width: 220px !important;
