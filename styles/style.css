@@ -14,6 +14,9 @@ body{
     font-weight: bold;
     font-size: 24px;
     color: #000;
+    /* background: url('https://source.unsplash.com/1920x1280/?nature') no-repeat; */
+    background-size: cover;
+    background-attachment: fixed;
 }
 h5{
     font-family: 'Varela', sans-serif;
@@ -22,8 +25,10 @@ h5{
 }
 .card {
     width: 340px;
-    
+    background: transparent;
+    border: none;
     border-radius: 14px;
+    box-shadow: 0px 0px 15px 5px #fff;
 }
 img{
     width: 220px !important;

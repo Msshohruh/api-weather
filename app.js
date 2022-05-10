@@ -2,28 +2,31 @@ const cityName = document.querySelector('#cityName')
 const form = document.querySelector('form')
 const weatherContainer = document.querySelector('.weather-container')
 
+let arrayList = []
 form.addEventListener('submit', (e) => {
     e.preventDefault()
-    const api_url = `https://api.openweathermap.org/data/2.5/weather?q=${cityName.value}&appid=a8b8a5d59c1304572cc2a4dc565dc830&units=metric`
+    if (!arrayList.includes(cityName.value)) {
+        const api_url = `https://api.openweathermap.org/data/2.5/weather?q=${cityName.value}&appid=0301cc378063fc27ad4bdca1fd57b13b&units=metric`
 
     fetch(api_url)
     .then((data) => {
         return data.json()
-    })
-    .then((newData) => {
-        showWeather(newData)
-    })
+        })
+        .then((newData) => {
+        showWeather(newData)    
+        })
+    arrayList.push(cityName.value)
+    console.log(arrayList)
+    } else {
+        alert('You have card like this!!!')
+    }
+    
     cityName.value = ''
 })
 
 
 
 function showWeather(data) {
-    console.log(data.name)
-    console.log(data.main.temp)
-    console.log(data)
-    console.log(data.weather[0].main)
-
     let card = document.createElement('div')
     card.setAttribute('class', 'card mb-2')
     card.innerHTML = `
@@ -36,6 +39,7 @@ function showWeather(data) {
         </div>
     `
     weatherContainer.prepend(card)
+    // document.body.style.background = `url('https://source.unsplash.com/1920x1280/?${data.weather[0].main}')`
 }
 
 weatherContainer.addEventListener('click', (e) => {
